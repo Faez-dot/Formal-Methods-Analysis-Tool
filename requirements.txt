@@ -1,0 +1,5 @@
+streamlit>=1.32.0
+python-sat>=0.1.8.dev12
+networkx>=3.2
+pyvis>=0.3.2
+pandas>=2.0
