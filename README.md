@@ -9,7 +9,7 @@ This tool is designed to bridge the gap between abstract feature models and actu
 ## 👥 Group Members
 - **Faez Ahmed** (23i-0598)
 - **Hussnain Haider** (23i-0695)
-- **Uzair Majeed** (23i-0695)
+- **Uzair Majeed** (23i-3063)
 
 ---
 
