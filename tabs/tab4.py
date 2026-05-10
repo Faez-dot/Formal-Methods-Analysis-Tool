@@ -16,9 +16,7 @@ def render():
         "(or use Ctrl+A in the file dialog). Git URLs are not directly fetchable "
         "in the browser — paste file contents manually if needed."
     )
-
-    st.text_input("🔗 Or paste a Git repo URL", placeholder="https://github.com/...", help="Note: For Git URL, files will need to be manually pasted or fetched.")
-
+    
     uploaded_files = st.file_uploader(
         "Upload source files (select multiple)",
         accept_multiple_files=True,
