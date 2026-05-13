@@ -1,0 +1,31 @@
+<featureModel>
+    <feature name="EnterpriseStore" type="root">
+        <feature name="Core" type="mandatory">
+            <feature name="Module_1" type="mandatory"/>
+            <feature name="Module_2" type="mandatory"/>
+        </feature>
+        <feature name="Payments" type="mandatory">
+            <group type="xor">
+                <feature name="Module_3"/>
+                <feature name="Module_4"/>
+            </group>
+        </feature>
+        <feature name="Shipping" type="optional">
+            <feature name="Module_5" type="optional"/>
+            <feature name="Module_6" type="optional"/>
+        </feature>
+        <feature name="Notifications" type="optional">
+            <group type="or">
+                <feature name="Module_7"/>
+                <feature name="Module_8"/>
+            </group>
+        </feature>
+        <feature name="AdvancedSearch" type="optional">
+             <feature name="Module_9" type="optional"/>
+        </feature>
+    </feature>
+    <constraints>
+        <constraint type="requires" from="Module_5" to="Module_1"/>
+        <constraint type="excludes" from="Module_3" to="Module_8"/>
+    </constraints>
+</featureModel>

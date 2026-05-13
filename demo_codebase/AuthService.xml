@@ -1,0 +1,18 @@
+<module name="AuthService">
+    <description>Handles user authentication and session management</description>
+    <dependencies>
+        <import module="DatabaseService" />
+        <import module="SecurityUtils" />
+    </dependencies>
+    <implementation>
+        <method name="login">
+            <param name="username" />
+            <param name="password" />
+            <step>Check user in DatabaseService</step>
+            <step>Verify password using SecurityUtils</step>
+        </method>
+        <method name="logout">
+            <step>Invalidate session token</step>
+        </method>
+    </implementation>
+</module>

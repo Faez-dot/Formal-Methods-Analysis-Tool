@@ -1,0 +1,23 @@
+<featureModel>
+    <feature name="GraphLibrary"> <!-- Root is mandatory even if it is not specified -->
+        <feature name="EdgeType" mandatory="true">
+            <group type="xor">
+                <feature name="Directed"/>
+                <feature name="Undirected"/>
+            </group>
+        </feature>
+        <feature name="Weighted" />
+        <feature name="Algorithm" mandatory="false">
+            <group type="or">
+                <feature name="Cycle"/>
+                <feature name="ShortestPath"/>
+                <feature name="MST" mandatory="true">
+                    <group type="xor">
+                        <feature name="Prim"/>
+                        <feature name="Kruskal"/>
+                    </group>
+                </feature>
+            </group>
+        </feature>
+    </feature>
+</featureModel>

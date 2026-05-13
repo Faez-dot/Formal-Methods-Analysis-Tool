@@ -1,0 +1,13 @@
+<module name="InventoryService">
+    <description>Tracks stock levels and stock alerts</description>
+    <dependencies>
+        <import module="DatabaseService" />
+        <import module="NotificationHub" />
+    </dependencies>
+    <logic>
+        <rule name="LowStockAlert">
+            <condition>stock_count &lt; 5</condition>
+            <action>Trigger alert via NotificationHub</action>
+        </rule>
+    </logic>
+</module>

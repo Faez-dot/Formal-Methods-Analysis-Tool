@@ -1,0 +1,15 @@
+<module name="AnalyticsService">
+    <description>Tracks user events and generates reports</description>
+    <dependencies>
+        <import module="DatabaseService" />
+    </dependencies>
+    <events>
+        <event name="page_view" />
+        <event name="add_to_cart" />
+        <event name="purchase" />
+    </events>
+    <implementation>
+        <step>Buffer events in memory</step>
+        <step>Flush to DatabaseService every 10 minutes</step>
+    </implementation>
+</module>

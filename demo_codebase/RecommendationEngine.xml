@@ -1,0 +1,12 @@
+<module name="RecommendationEngine">
+    <description>AI-driven product recommendations</description>
+    <dependencies>
+        <import module="AnalyticsService" />
+        <import module="CatalogModule" />
+    </dependencies>
+    <logic>
+        <model>Collaborative Filtering</model>
+        <step>Fetch user history from AnalyticsService</step>
+        <step>Match with items in CatalogModule</step>
+    </logic>
+</module>

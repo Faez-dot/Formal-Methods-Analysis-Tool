@@ -1,0 +1,16 @@
+<module name="SystemHealth">
+    <description>Monitors system performance and uptime</description>
+    <dependencies>
+        <import module="ConfigProvider" />
+        <import module="NotificationHub" />
+    </dependencies>
+    <checks>
+        <check name="CPUUsage" />
+        <check name="MemoryLeak" />
+    </checks>
+    <logic>
+        <if condition="SystemDown">
+            <action>Alert via NotificationHub</action>
+        </if>
+    </logic>
+</module>

@@ -1,0 +1,13 @@
+<module name="EmailProvider">
+    <description>SMTP implementation for sending emails</description>
+    <config>
+        <server>smtp.provider.com</server>
+        <port>587</port>
+    </config>
+    <logic>
+        <method name="send">
+            <step>Connect to SMTP</step>
+            <step>Transmit payload</step>
+        </method>
+    </logic>
+</module>

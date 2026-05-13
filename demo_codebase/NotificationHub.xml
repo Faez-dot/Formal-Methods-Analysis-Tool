@@ -1,0 +1,11 @@
+<module name="NotificationHub">
+    <description>Routes messages to Email and SMS providers</description>
+    <dependencies>
+        <import module="EmailProvider" />
+        <import module="SMSProvider" />
+    </dependencies>
+    <routing>
+        <route type="email" target="EmailProvider" />
+        <route type="sms" target="SMSProvider" />
+    </routing>
+</module>

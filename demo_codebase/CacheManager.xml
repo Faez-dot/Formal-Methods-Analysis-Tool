@@ -1,0 +1,11 @@
+<module name="CacheManager">
+    <description>In-memory cache for high performance data retrieval</description>
+    <config>
+        <engine>Redis</engine>
+        <expiry>3600</expiry>
+    </config>
+    <implementation>
+        <method name="get">Fetch key from Redis</method>
+        <method name="set">Store key-value pair</method>
+    </implementation>
+</module>

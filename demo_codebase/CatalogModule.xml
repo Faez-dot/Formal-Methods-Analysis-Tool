@@ -1,0 +1,16 @@
+<module name="CatalogModule">
+    <description>Manages product catalog and search indexes</description>
+    <dependencies>
+        <import module="DatabaseService" />
+        <import module="CacheManager" />
+    </dependencies>
+    <features>
+        <feature name="ProductListing">
+            <step>Fetch from CacheManager</step>
+            <step>Fallback to DatabaseService</step>
+        </feature>
+        <feature name="Search">
+            <step>Query elastic index</step>
+        </feature>
+    </features>
+</module>

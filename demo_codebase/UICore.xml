@@ -1,0 +1,12 @@
+<module name="UICore">
+    <description>Foundation for the web interface components</description>
+    <theme>
+        <primary_color>#3b5bdb</primary_color>
+        <font_family>Inter, sans-serif</font_family>
+    </theme>
+    <components>
+        <comp name="Button" />
+        <comp name="Navbar" />
+        <comp name="Modal" />
+    </components>
+</module>

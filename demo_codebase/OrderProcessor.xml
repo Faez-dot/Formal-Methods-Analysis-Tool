@@ -1,0 +1,13 @@
+<module name="OrderProcessor">
+    <description>Orchestrates order placement and payment flows</description>
+    <dependencies>
+        <import module="CartManager" />
+        <import module="PricingEngine" />
+        <import module="NotificationHub" />
+    </dependencies>
+    <workflow>
+        <step>Calculate total using PricingEngine</step>
+        <step>Clear CartManager</step>
+        <step>Notify user via NotificationHub</step>
+    </workflow>
+</module>

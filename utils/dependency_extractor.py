@@ -33,6 +33,9 @@ PATTERNS = {
     "c_cpp": [
         re.compile(r"""#include\s+[<"]([^>"]+)[>"]""", re.MULTILINE),
     ],
+    "xml": [
+        re.compile(r"""module\s*=\s*['"]([^'"]+)['"]""", re.MULTILINE),
+    ],
 }
 
 EXTENSION_MAP = {
@@ -47,6 +50,7 @@ EXTENSION_MAP = {
     ".cc": "c_cpp",
     ".h": "c_cpp",
     ".hpp": "c_cpp",
+    ".xml": "xml",
 }
 
 

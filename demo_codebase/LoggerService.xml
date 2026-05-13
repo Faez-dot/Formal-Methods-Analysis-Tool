@@ -1,0 +1,16 @@
+<module name="LoggerService">
+    <description>Centralized logging service for all modules</description>
+    <dependencies>
+        <import module="ConfigProvider" />
+    </dependencies>
+    <outputs>
+        <output type="console" level="DEBUG" />
+        <output type="file" path="/var/log/app.log" level="INFO" />
+    </outputs>
+    <implementation>
+        <method name="log">
+            <step>Format timestamp</step>
+            <step>Write to configured outputs</step>
+        </method>
+    </implementation>
+</module>

@@ -1,0 +1,12 @@
+<module name="ConfigProvider">
+    <description>Loads and manages application configuration</description>
+    <settings>
+        <setting key="app_name" value="EnterpriseStore" />
+        <setting key="version" value="2.1.0" />
+        <setting key="debug_mode" value="true" />
+    </settings>
+    <logic>
+        <action>Load configuration from environment variables</action>
+        <action>Apply overrides from local config.xml</action>
+    </logic>
+</module>

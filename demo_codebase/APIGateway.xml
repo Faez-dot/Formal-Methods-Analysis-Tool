@@ -1,0 +1,12 @@
+<module name="APIGateway">
+    <description>Entry point for all external requests</description>
+    <dependencies>
+        <import module="AuthService" />
+        <import module="LoggerService" />
+    </dependencies>
+    <logic>
+        <step>Log request in LoggerService</step>
+        <step>Validate JWT via AuthService</step>
+        <step>Route to internal module</step>
+    </logic>
+</module>

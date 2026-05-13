@@ -1,0 +1,16 @@
+<module name="SecurityUtils">
+    <description>Provides encryption, hashing, and token validation</description>
+    <algorithms>
+        <hash>SHA-256</hash>
+        <encryption>AES-256-CBC</encryption>
+    </algorithms>
+    <implementation>
+        <function name="encryptData">
+            <step>Generate IV</step>
+            <step>Apply AES encryption</step>
+        </function>
+        <function name="verifyHash">
+            <step>Compare input with stored hash</step>
+        </function>
+    </implementation>
+</module>

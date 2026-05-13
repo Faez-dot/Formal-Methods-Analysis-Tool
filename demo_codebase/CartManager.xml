@@ -1,0 +1,13 @@
+<module name="CartManager">
+    <description>Handles shopping cart operations and persistence</description>
+    <dependencies>
+        <import module="CatalogModule" />
+        <import module="DatabaseService" />
+    </dependencies>
+    <implementation>
+        <method name="addItem">
+            <step>Validate item in CatalogModule</step>
+            <step>Save to user session in DatabaseService</step>
+        </method>
+    </implementation>
+</module>

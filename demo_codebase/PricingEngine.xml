@@ -1,0 +1,12 @@
+<module name="PricingEngine">
+    <description>Calculates discounts, taxes, and final prices</description>
+    <dependencies>
+        <import module="ConfigProvider" />
+    </dependencies>
+    <logic>
+        <tax_rate>0.15</tax_rate>
+        <method name="applyDiscount">
+            <step>Check active promos in ConfigProvider</step>
+        </method>
+    </logic>
+</module>

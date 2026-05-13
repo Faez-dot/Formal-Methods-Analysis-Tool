@@ -1,0 +1,33 @@
+<featureModel>
+    <feature name="MobilePhone"> <!-- Root feature -->
+        <feature name="Camera" mandatory="true"/>
+        <feature name="Applications" mandatory="false">
+            <group type="xor">
+                <feature name="Java" mandatory="true">
+                </feature>
+                <feature name="Games" mandatory="true">
+                    <group type="or">
+                        <feature name="Backgammon"/>
+                        <feature name="Tetris" />
+                        <feature name="Chess"/>
+                    </group>
+                </feature>
+            </group>
+        </feature>
+        <feature name="Memory" />
+        <feature name="Screen" mandatory="true">
+            <group type="xor">
+                <feature name="Basic"/>
+                <feature name="HighRes"/>
+            </group>
+        </feature>
+    </feature>
+    <constraints>
+        <constraint>
+            <booleanExpression>Java -> Memory</booleanExpression>
+        </constraint>
+        <constraint>
+            <booleanExpression>Tetris -> Basic</booleanExpression>
+        </constraint>
+    </constraints>
+</featureModel>

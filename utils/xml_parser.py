@@ -20,7 +20,21 @@ import xml.etree.ElementTree as ET
 def _parse_feature_node(elem, parent_name=None):
     """Recursively parse a <feature> element into a dict."""
     name = elem.get("name", "Unknown")
-    ftype = elem.get("type", "optional")
+    
+    # Handle both 'type' attribute and 'mandatory' attribute
+    ftype = elem.get("type", "").lower()
+    mandatory_attr = elem.get("mandatory", "").lower()
+    
+    if not ftype:
+        if mandatory_attr == "true":
+            ftype = "mandatory"
+        elif mandatory_attr == "false":
+            ftype = "optional"
+        elif parent_name is None:
+            ftype = "root"
+        else:
+            ftype = "optional"
+
     node = {
         "name": name,
         "type": ftype,
@@ -83,9 +97,9 @@ def parse_feature_model_xml(xml_string: str) -> dict:
     # Find root feature element
     feature_root_elem = root_elem.find("feature")
     if feature_root_elem is None:
-        # Maybe root_elem IS the feature model container; look one level deeper
-        feature_root_elem = root_elem
-        if feature_root_elem.tag.lower() == "featuremodel":
+        if root_elem.tag.lower() == "feature":
+            feature_root_elem = root_elem
+        elif root_elem.tag.lower() == "featuremodel":
             feature_root_elem = root_elem.find("feature")
 
     if feature_root_elem is None:
@@ -104,8 +118,14 @@ def parse_feature_model_xml(xml_string: str) -> dict:
     constraints = []
     constraints_elem = root_elem.find("constraints")
     if constraints_elem is not None:
+        import re
         for c in constraints_elem:
             ctype = c.get("type", "").lower()
+            
+            # Check for nested tags (booleanExpression or englishStatement)
+            bool_expr = c.find("booleanExpression")
+            eng_stmt = c.find("englishStatement")
+            
             if ctype in ("requires", "excludes"):
                 constraints.append(
                     {
@@ -116,6 +136,27 @@ def parse_feature_model_xml(xml_string: str) -> dict:
                 )
             elif ctype == "english":
                 constraints.append({"type": "english", "text": c.text or ""})
+            elif bool_expr is not None:
+                # Basic parsing for "A -> B" or "A implies B"
+                expr = bool_expr.text or ""
+                if "->" in expr:
+                    parts = expr.split("->")
+                    constraints.append({"type": "requires", "from": parts[0].strip(), "to": parts[1].strip()})
+                elif "implies" in expr.lower():
+                    parts = re.split(r"\s+implies\s+", expr, flags=re.IGNORECASE)
+                    constraints.append({"type": "requires", "from": parts[0].strip(), "to": parts[1].strip()})
+                else:
+                    constraints.append({"type": "english", "text": expr})
+            elif eng_stmt is not None:
+                constraints.append({"type": "english", "text": eng_stmt.text or ""})
+
+    return {
+        "root": feature_root,
+        "all_features": all_feature_names,
+        "all_feature_nodes": all_features,
+        "constraints": constraints,
+        "error": None,
+    }
 
     return {
         "root": feature_root,

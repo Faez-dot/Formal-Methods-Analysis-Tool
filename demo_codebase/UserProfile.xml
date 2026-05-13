@@ -1,0 +1,13 @@
+<module name="UserProfile">
+    <description>Manages user profile data and preferences</description>
+    <dependencies>
+        <import module="AuthService" />
+        <import module="DatabaseService" />
+    </dependencies>
+    <implementation>
+        <method name="updateAvatar">
+            <step>Verify Auth using AuthService</step>
+            <step>Update blob in DatabaseService</step>
+        </method>
+    </implementation>
+</module>

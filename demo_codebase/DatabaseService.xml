@@ -1,0 +1,14 @@
+<module name="DatabaseService">
+    <description>Core data access layer and connection pooling</description>
+    <dependencies>
+        <import module="ConfigProvider" />
+    </dependencies>
+    <config>
+        <connection_string>jdbc:mysql://localhost:3306/store</connection_string>
+        <pool_size>20</pool_size>
+    </config>
+    <implementation>
+        <query name="findUser">SELECT * FROM users WHERE id = ?</query>
+        <query name="updateStock">UPDATE inventory SET count = ? WHERE item_id = ?</query>
+    </implementation>
+</module>

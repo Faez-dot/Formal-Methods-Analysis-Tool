@@ -1,0 +1,12 @@
+<module name="SMSProvider">
+    <description>Gateway for mobile SMS delivery</description>
+    <config>
+        <api_url>https://sms-api.com/v1</api_url>
+    </config>
+    <logic>
+        <method name="sendSMS">
+            <step>Format phone number</step>
+            <step>POST to API</step>
+        </method>
+    </logic>
+</module>
